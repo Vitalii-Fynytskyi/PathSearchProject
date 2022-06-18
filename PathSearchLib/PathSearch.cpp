@@ -55,6 +55,8 @@ void PathSearch::SearchHelper::grabNextDirectory()
 	subdirectoryIndexMutex.lock();
 	int index = ++lastGrabbedSubdirectoryIndex;
 	subdirectoryIndexMutex.unlock();
+	if (rootSubdirectories.size() <= index)
+		return;
 
 	directoryProcessing(rootSubdirectories.at(index));
 }
